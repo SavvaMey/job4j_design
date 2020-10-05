@@ -24,13 +24,17 @@ public class SimpleArray<T> implements Iterable<T> {
         return container[index];
     }
 
+    public void expand() {
+        size *= 2;
+        T[] subContainer = (T[]) new Object[size];
+        System.arraycopy(container, 0, subContainer, 0, pos - 1);
+        container = subContainer;
+    }
+
     public void add(T model) {
         modCount++;
         if (pos == container.length) {
-            size *= 2;
-            T[] subContainer = (T[]) new Object[size];
-            System.arraycopy(container, 0, subContainer, 0, pos - 1);
-            container = subContainer;
+            expand();
             container[pos++] = model;
         } else {
             container[pos++] = model;
@@ -39,7 +43,7 @@ public class SimpleArray<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
+        return new Iterator<>() {
             private int cursor = 0;
             private int expectedModCount = modCount;
 
