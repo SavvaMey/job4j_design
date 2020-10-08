@@ -1,4 +1,4 @@
-package ru.job4j.List;
+package ru.job4j.list;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
@@ -35,10 +35,8 @@ public class SimpleArray<T> implements Iterable<T> {
         modCount++;
         if (pos == container.length) {
             expand();
-            container[pos++] = model;
-        } else {
-            container[pos++] = model;
         }
+        container[pos++] = model;
     }
 
     @Override
