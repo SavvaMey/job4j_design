@@ -1,9 +1,6 @@
 package ru.job4j.list;
 
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 
 public class SimpleArray<T> implements Iterable<T> {
     private T[] container;
@@ -37,6 +34,10 @@ public class SimpleArray<T> implements Iterable<T> {
             expand();
         }
         container[pos++] = model;
+    }
+
+    public boolean checkUnique(T model) {
+        return Arrays.asList(container).contains(model);
     }
 
     @Override
