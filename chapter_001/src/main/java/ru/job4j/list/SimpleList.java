@@ -20,7 +20,7 @@ public class SimpleList<E>  implements Iterable<E> {
         return first == null;
     }
 
-    public E add(E element) {
+    public void add(E element) {
         SimpleLink<E> link = new SimpleLink<>(element);
 
         if (isEmpty()) {
@@ -32,7 +32,6 @@ public class SimpleList<E>  implements Iterable<E> {
         }
         size++;
         modCount++;
-        return last.data;
     }
 
     public E get(int index) {
