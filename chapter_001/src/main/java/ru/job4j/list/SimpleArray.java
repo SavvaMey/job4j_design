@@ -37,7 +37,12 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     public boolean checkUnique(T model) {
-        return Arrays.asList(container).contains(model);
+        for (int i = 0; i < container.length; i++) {
+            if (container[i].equals(model)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
