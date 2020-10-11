@@ -8,6 +8,7 @@ public class SimpleHashMap<K,V> implements Iterable<V> {
     private int size = 16;
     private int countElements = 0;
     private int modCount = 0;
+    private final double LOAD_FACTOR = 0.75;
     private Node<K, V>[] container;
 
     public SimpleHashMap() {
@@ -15,7 +16,7 @@ public class SimpleHashMap<K,V> implements Iterable<V> {
     }
 
     boolean insert(K key, V value) {
-        if (size == countElements) {
+        if ((size * LOAD_FACTOR) == countElements) {
             GrowSize();
         }
         int ind = hash(key);
@@ -34,17 +35,25 @@ public class SimpleHashMap<K,V> implements Iterable<V> {
     }
 
     private void GrowSize() {
-        this.size *= 2;
+        size *= 2;
         Node<K, V>[] oldContainer = container;
         container = new Node[size];
         for (Node node: oldContainer) {
-            container[hash((K) node.getKey())] = node;
+            if (node != null) {
+                container[hash((K) node.getKey())] = node;
+            }
         }
+
     }
 
     public V get(K key) {
         int ind = hash(key);
-        return  container[ind] == null ? null : container[ind].getValue();
+        if (container[ind] == null) {
+            return null;
+        } else if (container[ind].getKey().equals(key)) {
+            return container[ind].getValue();
+        }
+        return null;
     }
 
     private int hash(K key) {
@@ -56,6 +65,7 @@ public class SimpleHashMap<K,V> implements Iterable<V> {
         if (container[ind].getKey().equals(key)) {
             container[ind] = null;
             countElements--;
+            modCount++;
             return true;
         }
         return false;
