@@ -44,13 +44,10 @@ public class ListUtilsTest {
         assertThat(Arrays.asList(1, 0, 0, 2), Is.is(input));
     }
 
-
     @Test
     public void whenRemoveAllfromElemenets() {
         List<Integer> input = new ArrayList<>(Arrays.asList(1, 110, 100, 2));
         ListUtils.removeAll(input, Arrays.asList(1, 2));
         assertThat(Arrays.asList(110, 100), Is.is(input));
     }
-
-
 }

@@ -33,9 +33,9 @@ public class ForwardLinked<T> implements Iterable<T> {
         if (head == null) {
             throw new NoSuchElementException();
         }
-        T PopValue = head.getValue();
+        T popValue = head.getValue();
         head = head.next;
-        return PopValue;
+        return popValue;
     }
 
     public void revert() {

@@ -1,10 +1,10 @@
-package ru.job4j.Map;
+package ru.job4j.map;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class SimpleHashMap<K,V> implements Iterable<V> {
+public class SimpleHashMap<K, V> implements Iterable<V> {
     private int size = 16;
     private int countElements = 0;
     private int modCount = 0;
@@ -17,7 +17,7 @@ public class SimpleHashMap<K,V> implements Iterable<V> {
 
     boolean insert(K key, V value) {
         if ((size * LOAD_FACTOR) == countElements) {
-            GrowSize();
+            growSize();
         }
         int ind = hash(key);
         if (container[ind] != null) {
@@ -34,7 +34,7 @@ public class SimpleHashMap<K,V> implements Iterable<V> {
         return true;
     }
 
-    private void GrowSize() {
+    private void growSize() {
         size *= 2;
         Node<K, V>[] oldContainer = container;
         container = new Node[size];
@@ -86,7 +86,7 @@ public class SimpleHashMap<K,V> implements Iterable<V> {
             @Override
             public V next() {
             if (expectedModCount != modCount) {
-                throw new ConcurrentModificationException("Массив был увеличен");
+                throw new ConcurrentModificationException("Массив увеличен");
             }
             if (!hasNext()) {
                 throw new NoSuchElementException();
@@ -103,8 +103,8 @@ public class SimpleHashMap<K,V> implements Iterable<V> {
     }
 
     private static class Node<K, V> {
-        K key;
-        V value;
+        private K key;
+        private V value;
 
         public Node(K key, V value) {
             this.key = key;

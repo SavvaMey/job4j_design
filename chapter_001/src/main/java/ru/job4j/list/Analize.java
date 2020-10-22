@@ -9,8 +9,9 @@ import java.util.stream.Collectors;
 public class Analize {
 
     public static Info diff(List<User> previous, List<User> current) {
-        Map<Integer, String> userMap = previous.stream().collect(Collectors.toMap(User::getId , User::getName));
-        Info info = new Info(0,0,0);
+        Map<Integer, String> userMap = previous.stream()
+                .collect(Collectors.toMap(User::getId, User::getName));
+        Info info = new Info(0, 0, 0);
         current.forEach(el -> {
             if (!userMap.containsKey(el.getId())) {
                 info.added++;
@@ -25,8 +26,8 @@ public class Analize {
     }
 
     public static class User {
-        int id;
-        String name;
+        private int id;
+         private String name;
 
         public User(int id, String name) {
             this.id = id;
@@ -43,9 +44,9 @@ public class Analize {
     }
 
     public static class Info {
-        int added ;
-        int changed ;
-        int deleted ;
+        private int added;
+        private int changed;
+        private int deleted;
 
         public Info(int added, int changed, int deleted) {
             this.added = added;
@@ -55,19 +56,21 @@ public class Analize {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof Info)) return false;
+            if (this == o) {
+                return true;
+            }
+            if (!(o instanceof Info)) {
+                return false;
+            }
             Info info = (Info) o;
-            return added == info.added &&
-                    changed == info.changed &&
-                    deleted == info.deleted;
+            return added == info.added
+                    && changed == info.changed
+                    && deleted == info.deleted;
         }
 
         @Override
         public int hashCode() {
             return Objects.hash(added, changed, deleted);
         }
-
-
     }
 }

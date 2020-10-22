@@ -20,14 +20,14 @@ public class Tree<E> implements SimpleTree<E> {
         }
         Optional<Node<E>> childNode = findBy(child);
         if (childNode.isEmpty()) {
-            parentNode.get().children.add(new Node<>(child));
+            parentNode.get().getChildren().add(new Node<>(child));
             return true;
         }
         return false;
     }
 
     public boolean isBinary() {
-        Optional<Node<E>> rsl = checkTree(el -> el.children.size() > 2);
+        Optional<Node<E>> rsl = checkTree(el -> el.getChildren().size() > 2);
         return rsl.isEmpty();
     }
 
@@ -46,7 +46,7 @@ public class Tree<E> implements SimpleTree<E> {
                 rsl = Optional.of(el);
                 break;
             }
-            data.addAll(el.children);
+            data.addAll(el.getChildren());
         }
         return rsl;
     }

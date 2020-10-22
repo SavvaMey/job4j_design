@@ -17,8 +17,8 @@ public class AnalizeTest {
         Analize.User userK = new Analize.User(1, "Kir");
         Analize.User userS = new Analize.User(5, "Kim");
         List<Analize.User> current = List.of(userK, userT, userS);
-        Analize.Info info = Analize.diff(previous,current);
-        assertEquals(info, new Analize.Info(1,1,1));
+        Analize.Info info = Analize.diff(previous, current);
+        assertEquals(info, new Analize.Info(1, 1, 1));
     }
 
     @Test
@@ -29,7 +29,7 @@ public class AnalizeTest {
                 new Analize.User(3, "Stas")
         );
         List<Analize.User> current = List.of();
-        Analize.Info info = Analize.diff(previous,current);
-        assertEquals(info, new Analize.Info(0,0,3));
+        Analize.Info info = Analize.diff(previous, current);
+        assertEquals(info, new Analize.Info(0, 0, 3));
     }
 }

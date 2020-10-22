@@ -1,4 +1,4 @@
-package ru.job4j.Map;
+package ru.job4j.map;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,15 +12,15 @@ import static org.junit.Assert.*;
 public class SimpleHashMapTest {
     @Test
     public void getOne() {
-        SimpleHashMap<Integer,String> map = new SimpleHashMap<>();
+        SimpleHashMap<Integer, String> map = new SimpleHashMap<>();
         map.insert(1, "one");
         map.insert(2, "two");
         Assert.assertEquals(map.get(2), "two");
     }
 
     @Test
-    public void WhenGrow() {
-        SimpleHashMap<Integer,String> map = new SimpleHashMap<>();
+    public void whenGrow() {
+        SimpleHashMap<Integer, String> map = new SimpleHashMap<>();
         map.insert(1, "one");
         map.insert(2, "two");
         map.insert(3, "two");
@@ -43,8 +43,8 @@ public class SimpleHashMapTest {
     }
 
     @Test
-    public void WhenIdentic() {
-        SimpleHashMap<Integer,String> map = new SimpleHashMap<>();
+    public void whenIdentic() {
+        SimpleHashMap<Integer, String> map = new SimpleHashMap<>();
         map.insert(1, "one");
         map.insert(1, "two");
         Assert.assertEquals(map.get(1), "two");
@@ -52,13 +52,13 @@ public class SimpleHashMapTest {
 
     @Test
     public void insertOne() {
-        SimpleHashMap<Integer,String> map = new SimpleHashMap<>();;
+        SimpleHashMap<Integer, String> map = new SimpleHashMap<>();
         Assert.assertTrue(map.insert(1, "one"));
     }
 
     @Test
     public void deleteOne() {
-        SimpleHashMap<Integer,String> map = new SimpleHashMap<>();
+        SimpleHashMap<Integer, String> map = new SimpleHashMap<>();
         map.insert(1, "one");
         map.insert(2, "two");
         map.delete(2);
@@ -68,7 +68,7 @@ public class SimpleHashMapTest {
 
     @Test
     public void iteratorHasNextTrue() {
-        SimpleHashMap<Integer,String> map = new SimpleHashMap<>();
+        SimpleHashMap<Integer, String> map = new SimpleHashMap<>();
         map.insert(1, "one");
         Iterator<String> iterator = map.iterator();
         Assert.assertTrue(iterator.hasNext());
@@ -76,7 +76,7 @@ public class SimpleHashMapTest {
 
     @Test(expected = NoSuchElementException.class)
     public void iteratorDeleteNext() {
-        SimpleHashMap<Integer,String> map = new SimpleHashMap<>();
+        SimpleHashMap<Integer, String> map = new SimpleHashMap<>();
         map.insert(1, "one");
         map.delete(1);
         Iterator<String> iterator = map.iterator();
@@ -85,7 +85,7 @@ public class SimpleHashMapTest {
 
     @Test(expected = NoSuchElementException.class)
     public void iteratorNextNext() {
-        SimpleHashMap<Integer,String> map = new SimpleHashMap<>();
+        SimpleHashMap<Integer, String> map = new SimpleHashMap<>();
         map.insert(1, "one");
         map.insert(2, "one");
         Iterator<String> iterator = map.iterator();
@@ -96,7 +96,7 @@ public class SimpleHashMapTest {
 
     @Test
     public void iteratorNext() {
-        SimpleHashMap<Integer,String> map = new SimpleHashMap<>();
+        SimpleHashMap<Integer, String> map = new SimpleHashMap<>();
         map.insert(1, "one");
         Iterator<String> iterator = map.iterator();
         assertThat(map.get(1), is(iterator.next()));

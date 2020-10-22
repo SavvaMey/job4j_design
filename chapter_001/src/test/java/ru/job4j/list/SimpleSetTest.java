@@ -22,7 +22,6 @@ public class SimpleSetTest {
         assertThat(it.next(), is("second"));
     }
 
-
     @Test(expected = NoSuchElementException.class)
     public void whenGetEmptyFromIt() {
         SimpleSet<String> set = new SimpleSet<>();
