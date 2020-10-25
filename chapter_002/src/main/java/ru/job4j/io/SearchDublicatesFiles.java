@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
-
+//change
 public class SearchDublicatesFiles implements FileVisitor<Path> {
     Map<Path, Long> storage;
     Set<Path> resultPath;
