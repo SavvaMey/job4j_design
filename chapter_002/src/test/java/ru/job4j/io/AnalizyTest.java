@@ -30,12 +30,11 @@ public class AnalizyTest {
         File target = folder.newFile("resultTemp.log");
         Analizy analyzy = new Analizy();
         try (PrintWriter out = new PrintWriter(source)) {
-            out.write("200 10:56:01\n"
-                    + "200 10:57:01\n"
-                    + "400 10:58:01\n"
-                    + "200 10:59:01\n"
-                    + "500 11:01:02\n"
-                    + "200 11:02:02");
+            out.println("200 10:56:01");
+            out.println("400 10:58:01");
+            out.println("200 10:59:01");
+            out.println("500 11:01:02");
+            out.println("200 11:02:02");
         }
         analyzy.unavailable(source.getAbsolutePath(), target.getAbsolutePath());
         BufferedReader reader = new BufferedReader(new FileReader(target));
