@@ -14,7 +14,7 @@ public class ArgZip {
     }
 
     public boolean valid() {
-        if (args.length < 2) {
+        if (args.length < 3) {
             throw new IllegalArgumentException("Wrong ARGS");
         }
         Arrays.stream(args).forEach(

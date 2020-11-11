@@ -36,7 +36,7 @@ public class Zip {
     }
 
     public static List<Path> search(Path root, String ext) throws IOException {
-        SearhZip searcher = new SearhZip(p -> p.toFile().getName().endsWith(ext));
+        SearhZip searcher = new SearhZip(p -> !(p.toFile().getName().endsWith(ext)));
         Files.walkFileTree(root, searcher);
         return searcher.getPaths();
     }
