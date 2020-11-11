@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Set;
 //change
-public class SearchDubl {
+public class SearchDbl {
     public static void main(String[] args) throws IOException {
         Path start = Paths.get(".");
         search(start).forEach(System.out::println);
