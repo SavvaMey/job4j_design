@@ -1,0 +1,13 @@
+create database usersdb;
+create table cars(
+    id serial primary key,
+    model character varying(30),
+    age integer,
+    price numeric(9,3)
+);
+insert into cars(model, age, price) values ('Lada', '3', '45690.234');
+select * from cars;
+update cars set model = 'Kamaz';
+select * from cars;
+delete from cars;
+select * from cars;
