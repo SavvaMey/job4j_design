@@ -30,7 +30,8 @@ create table items (
     id serial primary key,
     name varchar(100),
     categories_id int references categories(id),
-    states_id int references states(id)
+    states_id int references states(id),
+    user_id int references users(id)
 );
 
 create table comments (
@@ -48,8 +49,7 @@ create table attaches (
 create table users (
     id serial primary key,
     name varchar(100),
-    role_id int references roles(id),
-    item_id int references items(id)
+    role_id int references roles(id)
 );
 
 insert into roles(role) values ('guest');
@@ -67,8 +67,8 @@ insert into categories(name) values ('usual');
 insert into states(name) values ('solved');
 insert into states(name) values ('unsolved');
 
-insert into items(name, categories_id, states_id) values ('first',1,2);
-insert into items(name, categories_id, states_id) values ('second',2,1);
+insert into items(name, categories_id, states_id, user_id) values ('first',1,2,1);
+insert into items(name, categories_id, states_id, user_id) values ('second',2,1,2);
 
 insert into comments(name) values ('help');
 insert into comments(name) values ('delete');
@@ -76,5 +76,5 @@ insert into comments(name) values ('delete');
 insert into attaches(name) values ('*.txt');
 insert into attaches(name) values ('*.txt');
 
-insert into users(name, role_id, item_id) values ('ds',1,1);
-insert into users(name, role_id, item_id) values ('dss',2,2);
+insert into users(name, role_id) values ('ds',1);
+insert into users(name, role_id) values ('dss',2);
