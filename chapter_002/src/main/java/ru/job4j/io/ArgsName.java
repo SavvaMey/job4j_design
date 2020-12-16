@@ -16,7 +16,7 @@ public class ArgsName {
         }
         for (String arg : args) {
             String[] subArgs = arg.split("=");
-            values.put(subArgs[0].substring(1),subArgs[1]);
+            values.put(subArgs[0].substring(1), subArgs[1]);
         }
     }
 
@@ -27,10 +27,11 @@ public class ArgsName {
     }
 
     public static void main(String[] args) {
-        ArgsName jvm = ArgsName.of(new String[] {"-Xmx=512", "-encoding=UTF-8"});
+        ArgsName jvm = ArgsName.of(
+                new String[] {"-Xmx=512", "-encoding=UTF-8"});
         System.out.println(jvm.get("Xmx"));
-
-        ArgsName zip = ArgsName.of(new String[] {"-out=project.zip", "-encoding=UTF-8"});
+        ArgsName zip = ArgsName.of(
+                new String[] {"-out=project.zip", "-encoding=UTF-8"});
         System.out.println(zip.get("out"));
     }
 }

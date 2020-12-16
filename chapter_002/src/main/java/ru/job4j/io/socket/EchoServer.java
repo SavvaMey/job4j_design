@@ -12,7 +12,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class EchoServer {
-    private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
+    private static final Logger LOG = LoggerFactory
+            .getLogger(UsageLog4j.class.getName());
 
     public static void main(String[] args)  {
         try (ServerSocket server = new ServerSocket(9000)) {
@@ -26,7 +27,7 @@ public class EchoServer {
                     String str;
                     while (!(str = in.readLine()).isEmpty()) {
                         if (str.contains("?msg=")) {
-                            strStatus= str.split("=")[1].split(" ")[0];
+                            strStatus = str.split("=")[1].split(" ")[0];
                             if (strStatus.equals("Exit")) {
                                 status = false;
                             }

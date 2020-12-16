@@ -16,11 +16,13 @@ public class Config {
     }
 
     public void load() {
-        try (BufferedReader in = new BufferedReader(new FileReader(this.path))) {
+        try (BufferedReader in = new BufferedReader(
+                new FileReader(this.path))) {
             in.lines()
-                    .filter(line -> !line.isEmpty() && !line.contains("# ") && line.contains("="))
+                    .filter(line -> !line.isEmpty()
+                            && !line.contains("# ") && line.contains("="))
                     .map(line -> line.split("="))
-                    .forEach(line -> values.put(line[0],line[1]));
+                    .forEach(line -> values.put(line[0], line[1]));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,7 +35,8 @@ public class Config {
     @Override
     public String toString() {
         StringJoiner out = new StringJoiner(System.lineSeparator());
-        try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
+        try (BufferedReader read = new BufferedReader(
+                new FileReader(this.path))) {
             read.lines().forEach(out::add);
         } catch (Exception e) {
             e.printStackTrace();

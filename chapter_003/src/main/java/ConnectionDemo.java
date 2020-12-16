@@ -31,15 +31,17 @@ public class ConnectionDemo {
     static class Settings {
         private final Properties prs = new Properties();
 
-        public void load (InputStream io) {
+        public void load(InputStream io) {
             try {
                 this.prs.load(io);
-            } catch ( Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
         public String getValue(String key) {
             return this.prs.getProperty(key);
         }
     }
 }
+

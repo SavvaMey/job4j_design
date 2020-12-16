@@ -42,7 +42,8 @@ public class ListUtils {
         return list;
     }
 
-    public static <T> List<T> replaceIf(List<T> list, Predicate<T> filter, T value) {
+    public static <T> List<T> replaceIf(
+            List<T> list, Predicate<T> filter, T value) {
         ListIterator<T> i = list.listIterator();
         while (i.hasNext()) {
             if (filter.test(i.next())) {

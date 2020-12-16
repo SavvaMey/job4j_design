@@ -32,7 +32,7 @@ public class Search {
         }
     }
 
-    public static Predicate<Path> createPredicate (String name, String type) {
+    public static Predicate<Path> createPredicate(String name, String type) {
         Predicate<Path> predicate = path -> path.getFileName().toString().equals(name);
         switch (type) {
             case "r":

@@ -7,7 +7,8 @@ import java.util.List;
 
 public class ReadFileBuffer {
     public static void main(String[] args) {
-        try (BufferedReader in = new BufferedReader(new FileReader("input.txt"))) {
+        try (BufferedReader in = new BufferedReader(
+                new FileReader("input.txt"))) {
             List<String> lines = new ArrayList<String>();
             in.lines().forEach(lines::add);
             for (String line : lines) {

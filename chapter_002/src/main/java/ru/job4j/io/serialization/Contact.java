@@ -23,13 +23,14 @@ public class Contact implements Serializable {
 
     @Override
     public String toString() {
-        return "Contact{" +
-                "zipCode=" + zipCode +
-                ", phone='" + phone + '\'' +
-                '}';
+        return "Contact{"
+                + "zipCode=" + zipCode
+                + ", phone='" + phone + '\''
+                +'}';
     }
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args)
+            throws IOException, ClassNotFoundException {
         final Contact contact = new Contact(123456, "+7 (111) 111-11-11");
 
         /* Запись объекта в файл */

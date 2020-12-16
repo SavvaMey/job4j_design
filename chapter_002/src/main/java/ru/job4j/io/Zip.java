@@ -15,7 +15,8 @@ public class Zip {
                 new BufferedOutputStream(new FileOutputStream(target)))) {
             for (Path file : sources) {
                 zip.putNextEntry(new ZipEntry(file.toString()));
-                try (BufferedInputStream out = new BufferedInputStream(new FileInputStream(file.toFile()))) {
+                try (BufferedInputStream out = new BufferedInputStream(
+                        new FileInputStream(file.toFile()))) {
                     zip.write(out.readAllBytes());
                 }
             }
@@ -25,9 +26,11 @@ public class Zip {
     }
 
     public void packSingleFile(File source, File target) {
-        try (ZipOutputStream zip = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(target)))) {
+        try (ZipOutputStream zip = new ZipOutputStream(
+                new BufferedOutputStream(new FileOutputStream(target)))) {
             zip.putNextEntry(new ZipEntry(source.getPath()));
-            try (BufferedInputStream out = new BufferedInputStream(new FileInputStream(source))) {
+            try (BufferedInputStream out = new BufferedInputStream(
+                    new FileInputStream(source))) {
                 zip.write(out.readAllBytes());
             }
         } catch (Exception e) {

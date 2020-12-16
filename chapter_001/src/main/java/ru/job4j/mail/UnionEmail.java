@@ -4,7 +4,8 @@ import java.util.*;
 import java.util.function.Function;
 
 public class UnionEmail {
-    public static Map<String, Set<String>> merge(Map<String, Set<String>> users) {
+    public static Map<String, Set<String>> merge(
+            Map<String, Set<String>> users) {
         Map<String, String> userEmail = new HashMap<>();
         Map<String, Set<String>> result = new HashMap<>();
 

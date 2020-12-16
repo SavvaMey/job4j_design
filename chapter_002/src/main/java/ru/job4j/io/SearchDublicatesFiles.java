@@ -22,8 +22,10 @@ public class SearchDublicatesFiles extends SimpleFileVisitor<Path> {
         resultPath = new HashSet<>();
     }
 
-    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-        if (storage.containsKey(file.getFileName()) && storage.get(file.getFileName()) == file.toFile().length()) {
+    public FileVisitResult visitFile(
+            Path file, BasicFileAttributes attrs) throws IOException {
+        if (storage.containsKey(file.getFileName())
+                && storage.get(file.getFileName()) == file.toFile().length()) {
         resultPath.add(file);
         } else {
             storage.put(file.getFileName(), file.toFile().length());

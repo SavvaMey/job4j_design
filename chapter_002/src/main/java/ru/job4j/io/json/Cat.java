@@ -14,6 +14,15 @@ public class Cat {
     private Contact ownerNumber;
     private String[] features;
 
+    public Cat(boolean sex, int weight, String name,
+               Contact ownerNumber, String... features) {
+        this.sex = sex;
+        this.weight = weight;
+        this.name = name;
+        this.ownerNumber = ownerNumber;
+        this.features = features;
+    }
+
     public String getName() {
         return name;
     }
@@ -34,23 +43,15 @@ public class Cat {
         return sex;
     }
 
-    public Cat(boolean sex, int weight, String name, Contact ownerNumber, String... features) {
-        this.sex = sex;
-        this.weight = weight;
-        this.name = name;
-        this.ownerNumber = ownerNumber;
-        this.features = features;
-    }
-
     @Override
     public String toString() {
-        return "Cat{" +
-                "sex=" + sex +
-                ", weight=" + weight +
-                ", name='" + name + '\'' +
-                ", ownerNumber=" + ownerNumber +
-                ", features=" + Arrays.toString(features) +
-                '}';
+        return "Cat{"
+                + "sex=" + sex
+                + ", weight=" + weight
+                + ", name='" + name + '\''
+                + ", ownerNumber=" + ownerNumber
+                + ", features=" + Arrays.toString(features)
+                + '}';
     }
 
     public static void main(String[] args) {
@@ -77,7 +78,8 @@ public class Cat {
 //        final Cat catMod = gson.fromJson(catJson, Cat.class);
 //        System.out.println(catMod);
 
-        JSONObject jsonOwner = new JSONObject("{\"phone\":" + cat.getOwnerNumber().getPhone() + "}");
+        JSONObject jsonOwner = new JSONObject(
+                "{\"phone\":" + cat.getOwnerNumber().getPhone() + "}");
         JSONObject json = new JSONObject();
         json.put("sex", cat.isSex());
         json.put("weight", cat.getWeight());

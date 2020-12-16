@@ -18,7 +18,8 @@ public class ArgZip {
             throw new IllegalArgumentException("Wrong ARGS");
         }
         Arrays.stream(args).forEach(
-                data -> this.values.put(data.split("=")[0].substring(1), data.split("=")[1]));
+                data -> this.values.put(
+                        data.split("=")[0].substring(1), data.split("=")[1]));
         return values.get("d") != null && values.get("o") != null;
     }
 

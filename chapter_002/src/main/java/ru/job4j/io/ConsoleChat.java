@@ -7,6 +7,7 @@ import java.util.List;
 public class ConsoleChat {
     private final String path;
     private final String botAnswers;
+    @SuppressWarnings("DeclarationOrder")
     private static final String OUT = "закончить";
     private static final String STOP = "стоп";
     private static final String CONTINUE = "продолжить";
@@ -19,7 +20,8 @@ public class ConsoleChat {
 
     public String getBotAnswer() {
         if (answers.isEmpty()) {
-            try (BufferedReader in = new BufferedReader(new FileReader(botAnswers))) {
+            try (BufferedReader in = new BufferedReader(
+                    new FileReader(botAnswers))) {
                 in.lines().forEach(answers::add);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -32,12 +34,12 @@ public class ConsoleChat {
         boolean running = true;
         boolean stop = false;
         StringBuilder log = new StringBuilder();
-            try (BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in)))
-            {
+            try (BufferedReader consoleReader = new BufferedReader(
+                    new InputStreamReader(System.in))) {
                 while (running) {
                 String input = consoleReader.readLine();
                 String bot = getBotAnswer();
-                if (input.equals(OUT)){
+                if (input.equals(OUT)) {
                     running = false;
                     log.append(input + System.lineSeparator());
                 } else if (input.equals(STOP)) {
@@ -48,13 +50,15 @@ public class ConsoleChat {
                 }
                 if (!stop && running) {
                     System.out.println(bot);
-                    log.append(input + System.lineSeparator() + bot + System.lineSeparator());
+                    log.append(input + System.lineSeparator()
+                            + bot + System.lineSeparator());
                 }
             }
         } catch (IOException e) {
                 e.printStackTrace();
             }
-        try (PrintWriter out = new PrintWriter(new BufferedOutputStream(new FileOutputStream(path)))) {
+        try (PrintWriter out = new PrintWriter(
+                new BufferedOutputStream(new FileOutputStream(path)))) {
             out.write(String.valueOf(log));
         }
     }

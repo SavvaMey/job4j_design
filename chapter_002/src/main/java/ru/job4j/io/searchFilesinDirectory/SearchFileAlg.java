@@ -19,7 +19,8 @@ public class SearchFileAlg extends SimpleFileVisitor<Path> {
     }
 
     @Override
-    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+    public FileVisitResult visitFile(
+            Path file, BasicFileAttributes attrs) throws IOException {
         if (predicate.test(file)) {
             paths.add(file);
         }

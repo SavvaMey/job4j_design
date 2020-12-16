@@ -8,7 +8,7 @@ public class SimpleHashMap<K, V> implements Iterable<V> {
     private int size = 16;
     private int countElements = 0;
     private int modCount = 0;
-    private final double LOAD_FACTOR = 0.75;
+    private final double loadFactor = 0.75;
     private Node<K, V>[] container;
 
     public SimpleHashMap() {
@@ -16,7 +16,7 @@ public class SimpleHashMap<K, V> implements Iterable<V> {
     }
 
     boolean insert(K key, V value) {
-        if ((size * LOAD_FACTOR) == countElements) {
+        if ((size * loadFactor) == countElements) {
             growSize();
         }
         int ind = hash(key);
