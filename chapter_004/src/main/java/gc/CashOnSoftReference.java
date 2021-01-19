@@ -10,11 +10,12 @@ public class CashOnSoftReference {
     private Map<String, SoftReference<String>> cash = new HashMap<>();
 
     public String get(String name) {
-        cash.putIfAbsent(name, loadText(name));
-            return cash.get(name).get();
+        String s = loadText(name);
+        cash.putIfAbsent(name, new SoftReference<>(s));
+            return s;
     }
 
-    private SoftReference<String> loadText(String name) {
+    private String loadText(String name) {
         StringBuilder s = new StringBuilder();
         try (BufferedReader in = new BufferedReader(
                 new FileReader("./chapter_004/src/filesForCash/" + name))) {
@@ -22,7 +23,7 @@ public class CashOnSoftReference {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new SoftReference<>(String.valueOf(s));
+        return String.valueOf(s);
     }
 
     public static void main(String[] args) {
