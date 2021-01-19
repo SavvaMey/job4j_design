@@ -17,12 +17,18 @@ public class GCDemo {
 
     public static void main(String[] args) {
         info();
-
-        for (int i = 0; i < 1500; i++) {
-            new User(i, "N" + i);
+        for (int i = 0; i < 10000; i++) {
+            new Person(i, "N" + i);
         }
+        System.gc();
         info();
     }
+    //        info();
+//
+//        for (int i = 0; i < 1500; i++) {
+//            new User(i, "N" + i);
+//        }
+//        info();
     /*
     Пустой объект без полей занимает для 64 битной системы: 16 байт
 	объект c полями занимает 32 байта (12 байт заголовок + 16 байт String + 4 байт Int)
