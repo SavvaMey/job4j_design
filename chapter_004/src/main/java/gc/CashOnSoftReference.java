@@ -10,9 +10,15 @@ public class CashOnSoftReference {
     private Map<String, SoftReference<String>> cash = new HashMap<>();
 
     public String get(String name) {
-        String s = loadText(name);
-        cash.putIfAbsent(name, new SoftReference<>(s));
-            return s;
+        String result;
+        SoftReference<String> var = cash.get(name);
+        if (var == null || var.get() == null) {
+            result = loadText(name);
+            cash.put(name, new SoftReference<>(result));
+            return result;
+        } else {
+            return var.get();
+        }
     }
 
     private String loadText(String name) {
