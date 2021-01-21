@@ -9,16 +9,28 @@ import java.util.Map;
 public class CashOnSoftReference {
     private Map<String, SoftReference<String>> cash = new HashMap<>();
 
+//    public String get(String name) {
+//        String result;
+//        SoftReference<String> var = cash.get(name);
+//        if (var == null || var.get() == null) {
+//            result = loadText(name);
+//            cash.put(name, new SoftReference<>(result));
+//            return result;
+//        } else {
+//            return var.get();
+//        }
+//    }
+
     public String get(String name) {
-        String result;
-        SoftReference<String> var = cash.get(name);
-        if (var == null || var.get() == null) {
-            result = loadText(name);
-            cash.put(name, new SoftReference<>(result));
-            return result;
-        } else {
-            return var.get();
+        String text = "";
+        if (cash.containsKey(name)) {
+            text = cash.get(name).get();
         }
+        if (text == null || text.length() == 0 || !cash.containsKey(name)) {
+            text = loadText(name);
+            cash.put(name, new SoftReference<>(text));
+        }
+        return text;
     }
 
     private String loadText(String name) {
