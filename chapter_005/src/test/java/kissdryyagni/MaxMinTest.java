@@ -1,5 +1,6 @@
-package KissDryYagni;
+package kissdryyagni;
 
+import net.sf.saxon.expr.Component;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -10,7 +11,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class MaxMinTest {
-    private List<Integer> list =Arrays.asList(10, 15, 100, -5, 10 , 2, 100, 3);
+    private List<Integer> list = Arrays.asList(10, 15, 100, -5, 10, 2, 100, 3);
     private MaxMin maxMin = new MaxMin();
     private Comparator<Integer> comparator = Integer::compare;
 
