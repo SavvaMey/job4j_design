@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class SimpleSequenceGenerator implements SequenceGenerator<Integer>{
+public class SimpleSequenceGenerator implements SequenceGenerator<Integer> {
     private final NumberGenerator<Integer> numberGenerator;
 
     public SimpleSequenceGenerator(NumberGenerator<Integer> numberGenerator) {
