@@ -3,7 +3,7 @@ package lsp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Shop implements StrategyStore {
+public class Shop implements Storage {
     private List<Food> store = new ArrayList<>();
 
     @Override
@@ -12,7 +12,7 @@ public class Shop implements StrategyStore {
     }
 
     @Override
-    public boolean control(Food food) {
+    public boolean accept(Food food) {
         double check = percentageSpent(food);
         if (check >= 0.25 && check < 1) {
             if (check > 0.75) {
@@ -22,6 +22,13 @@ public class Shop implements StrategyStore {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<Food> clear() {
+        List<Food> storeReturn = store;
+        store.clear();
+        return storeReturn;
     }
 
     public List<Food> getStore() {

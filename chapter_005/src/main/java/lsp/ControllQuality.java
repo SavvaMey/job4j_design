@@ -1,24 +1,23 @@
 package lsp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ControllQuality {
+//    private  Warehouse warehouse;
+//    private Trash trash;
+//    private Shop shop;
+    private final List<Storage> storages;
 
-    private  Warehouse warehouse;
-    private Trash trash;
-    private Shop shop;
-
-    public ControllQuality(Warehouse warehouse, Trash trash, Shop shop) {
-       this.warehouse = warehouse;
-       this.trash = trash;
-       this.shop = shop;
+    public ControllQuality(List<Storage> storages) {
+       this.storages = storages;
     }
 
-    public void executeStrategy(Food food) {
-         if (trash.control(food)) {
-           trash.add(food);
-       } else if (shop.control(food)) {
-           shop.add(food);
-       } else if (warehouse.control(food)) {
-            warehouse.add(food);
+    public void distribute(Food food) {
+        for (Storage storage : storages) {
+            if (storage.accept(food)) {
+                storage.add(food);
+            }
         }
     }
 }
