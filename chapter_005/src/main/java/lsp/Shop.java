@@ -1,6 +1,7 @@
 package lsp;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Shop implements Storage {
@@ -26,7 +27,7 @@ public class Shop implements Storage {
 
     @Override
     public List<Food> clear() {
-        List<Food> storeReturn = store;
+        List<Food> storeReturn = new ArrayList<>(store);
         store.clear();
         return storeReturn;
     }
@@ -35,3 +36,5 @@ public class Shop implements Storage {
         return store;
     }
 }
+
+
