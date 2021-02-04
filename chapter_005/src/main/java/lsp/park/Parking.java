@@ -1,10 +1,11 @@
 package lsp.park;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Parking implements StrategyParking {
-    private ArrayList<AbstractCar> parkTruck;
-    private ArrayList<AbstractCar> parkCar;
+    private List<AbstractCar> parkTruck;
+    private List<AbstractCar> parkCar;
     private int cellsTruck;
     private int cellsCar;
 
@@ -55,11 +56,11 @@ public class Parking implements StrategyParking {
         }
     }
 
-    public ArrayList<AbstractCar> getParkTruck() {
+    public List<AbstractCar> getParkTruck() {
         return this.parkTruck;
     }
 
-    public ArrayList<AbstractCar> getParkCar() {
+    public List<AbstractCar> getParkCar() {
         return this.parkCar;
     }
 }
