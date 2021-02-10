@@ -85,4 +85,23 @@ public class ControllQualityTest {
         List<Food> storeReturn = shop.clear();
         assertThat(bread, is(storeReturn.get(0)));
     }
+
+    @Test
+    public void thenResort() {
+        Calendar dateCreated = Calendar.getInstance();
+        Calendar dateExpired = Calendar.getInstance();
+        dateCreated.set(2021, Calendar.FEBRUARY, 1);
+        dateExpired.set(2021, Calendar.FEBRUARY, 28);
+        Food milk = new Milk("milk", dateCreated, dateExpired, 1000, 0);
+        Warehouse warehouse = new Warehouse();
+        Shop shop = new Shop();
+        Trash trash = new Trash();
+        ControllQuality control = new ControllQuality(List.of(shop, trash, warehouse));
+        control.distribute(milk);
+        assertThat(milk.getName(), is(shop.getStore().get(0).getName()));
+        dateCreated.set(2021, Calendar.FEBRUARY, 11);
+        milk.setCreateDate(dateCreated);
+        control.resort();
+        assertThat(milk.getName(), is(warehouse.getStore().get(0).getName()));
+    }
 }

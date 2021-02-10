@@ -1,12 +1,10 @@
 package lsp;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class ControllQuality {
-//    private  Warehouse warehouse;
-//    private Trash trash;
-//    private Shop shop;
     private final List<Storage> storages;
 
     public ControllQuality(List<Storage> storages) {
@@ -19,5 +17,13 @@ public class ControllQuality {
                 storage.add(food);
             }
         }
+    }
+
+    public void resort() {
+        List<Food> foods = new ArrayList<>();
+        for (Storage storage : storages) {
+            foods.addAll(storage.clear());
+        }
+        foods.forEach(this::distribute);
     }
 }
